@@ -19,9 +19,13 @@ term_handler() {
 #trap 'kill ${!}; my_handler' SIGUSR1
 trap 'kill ${!}; term_handler' SIGTERM
 
+if [ ! -f /usr/local/etc/piler/sphinx.conf ]; then
+  yum install -y mysql openssl && sh /usr/src/piler/util/postinstall.sh
+fi
+
 # Start crond for piler tasks
-if [ -f /usr/local/etc/piler.crontab ]; then
-  crontab -u piler /usr/local/etc/piler.crontab
+if [ -f /usr/local/etc/piler/piler.crontab ]; then
+  crontab -u piler /usr/local/etc/piler/piler.crontab
 fi
 crond
 pid="$!"
