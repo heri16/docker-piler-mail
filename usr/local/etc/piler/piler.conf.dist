@@ -1,3 +1,4 @@
+iv=
 archive_emails_not_having_message_id=0
 archive_only_mydomains=0
 backlog=20
@@ -24,6 +25,8 @@ mmap_dedup_test=0
 mysql_connect_timeout=2
 mysqldb=piler
 mysqlpwd=verystrongpassword
+mysqlhost=
+mysqlport=
 mysqlsocket=/var/run/mysqld/mysqld.sock
 mysqluser=piler
 number_of_worker_processes=10

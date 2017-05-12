@@ -9,7 +9,7 @@ RUN yum -y install mysql-devel openssl-devel tre-devel tcp_wrappers-devel memcac
   groupadd -g 1001 piler && useradd -u 1001 -g piler -m -s /bin/sh -d /var/piler piler && usermod -L piler && \
   mkdir -p /usr/src/piler && \
   curl -L https://bitbucket.org/jsuto/piler/downloads/piler-1.2.0.tar.gz  | tar --strip-components=1 -xzC /usr/src/piler && \
-  cd /usr/src/piler && ./configure --localstatedir=/var --with-database=mysql --enable-starttls --enable-tcpwrappers --enable-memcached && make && make install && \
+  cd /usr/src/piler && ./configure --localstatedir=/var --with-database=mysql --enable-tcpwrappers --enable-memcached && make && make install && \
   echo /usr/local/lib > /etc/ld.so.conf.d/local.conf && ldconfig && \
   #cp /usr/local/etc/piler/sphinx.conf.dist /usr/local/etc/piler/sphinx.conf && \
   #ln -sf /usr/local/etc/piler/sphinx.conf /etc/sphinx/sphinx.conf && \
