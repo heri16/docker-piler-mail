@@ -6,10 +6,11 @@ Piler email archiver as Docker image (http://mailpiler.org)
 git clone https://github.com/heri16/docker-piler-mail.git
 cp docker-piler-mail/usr/local/etc/piler/piler.conf.dist docker-piler-mail/usr/local/etc/piler/piler.conf
 mv docker-piler-mail/usr/local/etc/piler/. /usr/local/etc/piler/
-docker run -ti --rm -v /usr/local/etc/piler/:/usr/local/etc/piler:rw heri16/piler-mail
+docker run -ti --rm -v /usr/local/etc/piler/:/usr/local/etc/piler:rw,Z heri16/piler-mail
 # display_install_intro
 # gather_mysql_account
 # make_new_key
+# make_certificate
 ```
 
 ## Usage in docker-compose.yml:
@@ -18,7 +19,7 @@ services:
   piler_indexer:
     build: ./docker-piler-mail
     expose:
-      - "26"
+      - "25"
       - "9306"
     volumes:
       - /usr/local/etc/piler/:/usr/local/etc/piler:ro
