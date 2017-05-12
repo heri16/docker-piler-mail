@@ -15,7 +15,7 @@ RUN yum -y install mysql-devel openssl-devel tre-devel tcp_wrappers-devel memcac
   #ln -sf /usr/local/etc/piler/sphinx.conf /etc/sphinx/sphinx.conf && \
   #cp ./init.d/rc.searchd /etc/init.d/rc.searchd && chmod +x /etc/init.d/rc.searchd && chkconfig --add rc.searchd && \
   sed -e'/load_default_values$/q' ./util/postinstall.sh > /tmp/postinstall.sh && \
-  cd /tmp && echo $'make_cron_entries\ncrontab -u $PILERUSER $CRON_TMP\nclean_up_temp_stuff' >> postinstall.sh && sh postinstall.sh && \
+  cd /tmp && echo $'make_cron_entries\ncrontab -u $PILERUSER $CRON_TMP\nclean_up_temp_stuff' >> postinstall.sh && sh postinstall.sh && rm postinstall.sh && \
   yum -y remove mysql-devel openssl-devel tre-devel tcp_wrappers-devel memcached-devel gcc make && yum -y autoremove
 
 #VOLUMES ["/usr/local/etc/piler/", "/var/piler/"]

@@ -3,12 +3,12 @@ Piler email archiver as Docker image (http://mailpiler.org)
 
 ## Configure New Installation:
 ```bash
+git clone https://github.com/heri16/docker-piler-mail.git
+cp docker-piler-mail/usr/local/etc/piler/piler.conf.dist docker-piler-mail/usr/local/etc/piler/piler.conf
+mv docker-piler-mail/usr/local/etc/piler/. /usr/local/etc/piler/
 docker run -ti --rm -v /usr/local/etc/piler/:/usr/local/etc/piler:rw heri16/piler-mail
-# gather_webserver_data
+# display_install_intro
 # gather_mysql_account
-# gather_sphinx_data
-# gather_smtp_relay_data
-# make_cron_entries
 # make_new_key
 ```
 
