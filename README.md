@@ -11,7 +11,7 @@ services:
       - "26"
       - "9306"
     volumes:
-      - /usr/local/etc/:/usr/local/etc:ro
+      - /usr/local/etc/piler/:/usr/local/etc/piler:rw
       - /var/piler/store/:/var/piler/store:rw
       - /var/piler/sphinx/:/var/piler/sphinx:rw,Z
       - /var/piler/stat/:/var/piler/stat:rw,Z
