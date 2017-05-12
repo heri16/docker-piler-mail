@@ -30,6 +30,7 @@ if [ ! -f /usr/local/etc/piler/sphinx.conf ]; then
     execute_post_install_tasks
     clean_up_temp_stuff
   )
+  exit
 fi
 
 # setup handlers
@@ -46,7 +47,7 @@ pid="$!"
 
 # Start services
 /etc/init.d/rc.piler start
-/etc/init.d/rc.searchd start
+/etc/init.d/rc.searchd start || (su piler -c "indexer --all --config /usr/local/etc/piler/sphinx.conf" && /etc/init.d/rc.searchd start)
 
 # wait forever
 while true
