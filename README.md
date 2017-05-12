@@ -19,14 +19,13 @@ services:
       - /var/piler/tmp/:/var/piler/tmp:rw,Z
 ```
 
-## Example /usr/local/etc/piler.cron:
-```cron
-### PILERSTART
-5,35 * * * * /usr/local/libexec/piler/indexer.delta.sh
-30   2 * * * /usr/local/libexec/piler/indexer.main.sh
-*/15 * * * * /bin/indexer --quiet tag1 --rotate
-*/15 * * * * /bin/indexer --quiet note1 --rotate
-30   6 * * * /usr/bin/php /usr/local/libexec/piler/generate_stats.php --webui /var/www/piler
-*/5 * * * * /usr/bin/find /var/www/piler/tmp -type f -name i.\* -exec rm -f {} \;
-### PILEREND
+## New Installation:
+```bash
+docker exec -ti piler_indexer_1 /bin/bash -c "cd /usr/src/piler/ && sh util/postinstall.sh"
+# gather_webserver_data
+# gather_mysql_account
+# gather_sphinx_data
+# gather_smtp_relay_data
+# make_cron_entries
+# make_new_key
 ```
