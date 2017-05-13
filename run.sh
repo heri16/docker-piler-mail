@@ -5,7 +5,7 @@ pid=0
 
 # SIGTERM-handler
 term_handler() {
-  if [ $pid -ne 0 ]; then
+  if [ -n "$pid" ] && [ $pid -ne 0 ]; then
     /etc/init.d/rc.searchd stop
     /etc/init.d/rc.piler stop
     kill -SIGTERM "$pid"
@@ -47,7 +47,7 @@ pid="$!"
 
 # Start services
 /etc/init.d/rc.piler start
-/etc/init.d/rc.searchd start || (su piler -c "indexer --all --config /usr/local/etc/piler/sphinx.conf" && /etc/init.d/rc.searchd start)
+/etc/init.d/rc.searchd start || su piler -c "indexer --all --config /usr/local/etc/piler/sphinx.conf"
 
 # wait forever
 while true
